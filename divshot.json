@@ -1,0 +1,6 @@
+{
+  "name": "outreachpro-marketing",
+  "root": "./",
+  "clean_urls": true,
+  "error_page": "y"
+}
