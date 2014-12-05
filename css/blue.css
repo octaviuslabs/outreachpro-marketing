@@ -208,7 +208,7 @@ a:focus {
 /*------------------------------------------*/
 
 .navbar-brand {
-	padding: 18px 15px;
+	padding: 10px 15px;
 }  
      
 /*------------------------------------------*/
@@ -298,7 +298,7 @@ a:focus {
 
 #intro {
 	width: 100%;
-	background-image: url(../img/thumbs/intro_bkg.jpg);
+	background-image: url(../img/thumbs/hero_background.jpg);
 	background-repeat: no-repeat;
 	background-position: center center;		
 	background-size: cover;
