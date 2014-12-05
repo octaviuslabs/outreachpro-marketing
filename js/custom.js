@@ -500,8 +500,10 @@
 					    error       : function(err) { alert("Could not connect to the registration server. Please try again later."); },
 					    success     : function(data) {
 					        if (data.result != "success") {
+					        	_trackEvent("signups", "error");
 					        	$(".message").html("<span style='color:red;'>The email address you entered was invalid. Please make sure you enter a valid email address to sign up.</span>");
 					        } else {
+					        	_trackEvent("signups", "new");
 					          $("#s_email").val("");
 										$(".message").html('<span style="color:#19acca;">Great! Please confirm your email address by following the instructions we just sent you.</span>');
 					        }
