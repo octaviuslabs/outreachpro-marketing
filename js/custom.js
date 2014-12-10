@@ -185,6 +185,8 @@
 				}
 			});
 
+
+
 			// To the top
 			$(scrollId).click( function(event) {
 				$('html, body').animate({scrollTop:0}, o.topSpeed);
@@ -504,6 +506,8 @@
 					        	$(".message").html("<span style='color:red;'>The email address you entered was invalid. Please make sure you enter a valid email address to sign up.</span>");
 					        } else {
 					        	ga('send', 'event', "signups", "new", "success");
+										window['optimizely'] = window['optimizely'] || [];
+										window.optimizely.push(["trackEvent", "newSignup"]);
 					          $("#s_email").val("");
 										$(".message").html('<span style="color:#19acca;">Great! Please confirm your email address by following the instructions we just sent you.</span>');
 					        }
