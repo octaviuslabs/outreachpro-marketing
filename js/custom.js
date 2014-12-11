@@ -484,32 +484,35 @@
 		"use strict";
 
 	
-		$('#newsletter_form').submit(function() {
+		$('#signup_form').submit(function() {
 			if (!valid_email_address($("#mce-EMAIL").val()))
 				{
-					$(".message").html("<span style='color:red;'>The email address you entered was invalid. Please make sure you enter a valid email address to sign up.</span>");
+					$(".message").html("<span style='color:#D91E18;'>The email address you entered was invalid. Please make sure you enter a valid email address to sign up.</span>");
 				}
 			else
 				{
-					$(".message").html("<span style='color:#19acca;'>Adding to the early access group...</span>");
+					$(".message").html("<span style='color:#BFBFBF;'>Adding to the early access group...</span>");
 					$.ajax({
-					    type: $('#newsletter_form').attr('method'),
-					    url: $('#newsletter_form').attr('action'),
-					    data: $('#newsletter_form').serialize(),
+					    type: $('#signup_form').attr('method'),
+					    url: $('#signup_form').attr('action'),
+					    data: $('#signup_form').serialize(),
 					    cache       : false,
 					    dataType    : 'json',
 					    contentType: "application/json; charset=utf-8",
-					    error       : function(err) { alert("Could not connect to the registration server. Please try again later."); },
+					    error       : function(err) { 
+					    	ga('send', 'event', "signups", "new", "error");
+					    	alert("Could not connect to the registration server. Please send an email to hello {at} octaviuslabs.com"); 
+					    },
 					    success     : function(data) {
 					        if (data.result != "success") {
 					        	ga('send', 'event', "signups", "new", "error");
-					        	$(".message").html("<span style='color:red;'>The email address you entered was invalid. Please make sure you enter a valid email address to sign up.</span>");
+					        	$(".message").html("<span style='color:#D91E18;'>The email address you entered was invalid. Please make sure you enter a valid email address to sign up.</span>");
 					        } else {
 					        	ga('send', 'event', "signups", "new", "success");
 										window['optimizely'] = window['optimizely'] || [];
 										window.optimizely.push(["trackEvent", "newSignup"]);
 					          $("#s_email").val("");
-										$(".message").html('<span style="color:#19acca;">Great! Please confirm your email address by following the instructions we just sent you.</span>');
+										$(".message").html('<span style="color:#87D37C;">Great! Please confirm your email address by following the instructions we just sent you.</span>');
 					        }
 					    }
 					});
