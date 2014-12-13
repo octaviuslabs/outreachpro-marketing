@@ -491,6 +491,7 @@
 			else
 				{
 					$(".message").html("<span style='color:#BFBFBF;'>Adding to the early access group...</span>");
+					var plan_name = $('#mce-PLAN').val();
 					$.ajax({
 					    type: $('#newsletter_form').attr('method'),
 					    url: $('#newsletter_form').attr('action'),
@@ -499,15 +500,15 @@
 					    dataType    : 'json',
 					    contentType: "application/json; charset=utf-8",
 					    error       : function(err) { 
-					    	ga('send', 'event', "signups", "new", "error");
+					    	ga('send', 'event', "signups", "new", plan_name + "_error");
 					    	alert("Could not connect to the registration server. Please send an email to hello {at} octaviuslabs.com"); 
 					    },
 					    success     : function(data) {
 					        if (data.result != "success") {
-					        	ga('send', 'event', "signups", "new", "error");
+					        	ga('send', 'event', "signups", "new", plan_name + "_error");
 					        	$(".message").html("<span style='color:#D91E18;'>The email address you entered was invalid. Please make sure you enter a valid email address to sign up.</span>");
 					        } else {
-					        	ga('send', 'event', "signups", "new", "success");
+					        	ga('send', 'event', "signups", "new", plan_name + "_success");
 										window['optimizely'] = window['optimizely'] || [];
 										window.optimizely.push(["trackEvent", "newSignup"]);
 					          $("#s_email").val("");
