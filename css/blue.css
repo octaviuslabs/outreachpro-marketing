@@ -1882,10 +1882,10 @@ textarea {
 	margin-bottom: 20px;
 }
 
-#signup_form {
+/*#signup_form {
 	margin: 15px auto;
 	width: 50%;
-}
+}*/
 
 /*------------------------------------------*/
 /*	  Newsletter Form Input
@@ -2088,6 +2088,12 @@ nav a#pull {
 #form_response .btn-theme:hover {
 	background-color: #008ED6;
 	color: #fff;
+}
+
+#newsletter_form {
+  background-color: rgba(20, 20,20, 0.65);
+  padding: 20px;
+  width: 75%;
 }
 
 

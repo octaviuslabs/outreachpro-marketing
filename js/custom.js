@@ -482,9 +482,8 @@
 	$(document).ready(function() {
 	
 		"use strict";
-
 	
-		$('#signup_form').submit(function() {
+		$('#newsletter_form').submit(function() {
 			if (!valid_email_address($("#mce-EMAIL").val()))
 				{
 					$(".message").html("<span style='color:#D91E18;'>The email address you entered was invalid. Please make sure you enter a valid email address to sign up.</span>");
@@ -493,9 +492,9 @@
 				{
 					$(".message").html("<span style='color:#BFBFBF;'>Adding to the early access group...</span>");
 					$.ajax({
-					    type: $('#signup_form').attr('method'),
-					    url: $('#signup_form').attr('action'),
-					    data: $('#signup_form').serialize(),
+					    type: $('#newsletter_form').attr('method'),
+					    url: $('#newsletter_form').attr('action'),
+					    data: $('#newsletter_form').serialize(),
 					    cache       : false,
 					    dataType    : 'json',
 					    contentType: "application/json; charset=utf-8",
@@ -528,8 +527,19 @@
 		return pattern.test(email);		
 	}
 
+	// Toggles Button
+	function switch_plan_to(plan_name){
+		$('#mce-PLAN').val(plan_name);
+		return plan_name;
+	};
 
+	$('#select_ulimited_plan').click(function() {
+		switch_plan_to("unlimited");
+	});
 
+	$('#select_early_plan').click(function() {
+		switch_plan_to("early_access");
+	});
 	
 	
 	
